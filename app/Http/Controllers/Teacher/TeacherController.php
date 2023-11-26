@@ -112,54 +112,65 @@ class TeacherController extends BaseController
             ->with('person', $person);
     }
 
-    // public function updateTeacher(Request $request, $id)
-    // {
-    //     // Valida los datos del formulario
-    //     $request->validate([
-    //         'AreaId' => 'required',
-    //         'ScheduleId' => 'required',
-    //         'name' => 'required',
-    //         'lastname_p' => 'required',
-    //         'lastname_m' => 'required',
-    //         // 'dni' => 'required',
-    //         // 'type_teacher' => 'required',
-    //     ]);
+    public function updateTeacher(Request $request, $id)
+    {
+        // Valida los datos del formulario
+        $request->validate([
+            // 'AreaId' => 'required',
+            // 'ScheduleId' => 'required',
+            // 'name' => 'required',
+            // 'lastname_p' => 'required',
+            // 'lastname_m' => 'required',
+            // 'dni' => 'required',
+            // 'type_teacher' => 'required',
+        ]);
 
-    //     // Encuentra el empleado por su ID
-    //     $teacher = Teacher::find($id);
+        // Encuentra el empleado por su ID
+        $teacher = Teacher::find($id);
 
-    //     if (!$teacher) {
-    //         // Devuelve una respuesta JSON de error
-    //         return response()->json(['error' => 'Empleado no encontrado'], 404);
-    //     }
+        if (!$teacher) {
+            // Devuelve una respuesta JSON de error
+            return response()->json(['error' => 'Empleado no encontrado'], 404);
+        }
 
-    //     // Obtiene el valor de PersonId desde el empleado
-    //     $personId = $teacher->PersonId;
+        // Obtiene el valor de PersonId desde el empleado
+        $personId = $teacher->PersonId;
 
-    //     // Encuentra la persona por su ID
-    //     $person = Person::find($personId);
+        // Encuentra la persona por su ID
+        $person = Person::find($personId);
 
-    //     if (!$person) {
-    //         // Devuelve una respuesta JSON de error
-    //         return response()->json(['error' => 'Persona no encontrada'], 404);
-    //     }
+        if (!$person) {
+            // Devuelve una respuesta JSON de error
+            return response()->json(['error' => 'Persona no encontrada'], 404);
+        }
 
-    //     // Actualiza los datos del empleado
-    //     $person->PerName = $request->input('name');
-    //     $person->PerLastName = $request->input('lastname_p');
-    //     $person->PerMotherLastName = $request->input('lastname_m');
-    //     $person->PerDni = $request->input('dni');
-    //     $person->save();
+        // Actualiza los datos del empleado
+        $person->name = $request->input('name');
+        $person->lastname = $request->input('lastname');
+        $person->address = $request->input('address');
+        $person->dni = $request->input('dni');
+        $person->sex = $request->input('sex');
+        $person->birthdate = $request->input('birthdate');
+        $person->phone = $request->input('phone');
+        $person->save();
 
-    //     $teacher->EmpType = $request->input('EmpType');
-    //     $teacher->AreaId = $request->input('AreaId');
-    //     $teacher->ScheduleId = $request->input('ScheduleId');
-    //     $teacher->PersonId = $person->id;
-    //     $teacher->save();
+        $teacher->email = $request->input('email');
+        $teacher->civil_status = $request->input('civilStatus');
+        $teacher->faculty = $request->input('faculty');
+        $teacher->faculty_deparment = $request->input('facultyDepartment');
+        $teacher->category = $request->input('category');
+        $teacher->codality = $request->input('codality');
+        $teacher->job_title = $request->input('jobTitle');
+        $teacher->condition_teacher = $request->input('condition');
+        $teacher->professional_grade = $request->input('professionalGrade');
+        $teacher->date_of_admission = $request->input('dateAdmission');
+        $teacher->teacher_status = $request->input('teacherStatus');
+        $teacher->person_id = $person->id;
+        $teacher->save();
 
-    //     // Devuelve una respuesta JSON con un mensaje de éxito
-    //     return response()->json(['success' => 'Área actualizada con éxito']);
-    // }
+        // Devuelve una respuesta JSON con un mensaje de éxito
+        return response()->json(['success' => 'Área actualizada con éxito']);
+    }
 
     public function deleteTeacher($id)
     {
