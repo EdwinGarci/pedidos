@@ -1,0 +1,9 @@
+Here is your new client secret. This is the only time it will be shown so don't lose it!
+
+Client ID: 9a11ca66-f599-44b1-86aa-69fe7f6f00b0
+Client secret: y5eaohkKhb2LrSNscb4c6RtVZig8NgPKD1ga7S9P
+Password grant client created successfully.
+Here is your new client secret. This is the only time it will be shown so don't lose it!
+
+Client ID: 9a11ca6a-728e-476d-aa31-738b259ce748
+Client secret: zPqKQMgUeH7zhNYQblRHX0TgBwJzzy0pqQ5M8oTK

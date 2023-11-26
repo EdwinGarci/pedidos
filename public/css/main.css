@@ -1,0 +1,19 @@
+.login-design {
+    background-image: url('/img/bg-asistencia.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    padding: 25px;
+}
+
+.waves {
+    
+}
+
+.login {
+    background-color: rgba(255, 255, 255, 0.56);
+    height: 100%;
+    width: 450px;
+    border-radius: 10px;
+}
