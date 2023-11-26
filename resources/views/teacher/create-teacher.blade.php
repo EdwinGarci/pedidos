@@ -12,60 +12,127 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="teacherName">Nombres</label>
-                        <input type="text" class="form-control" id="teacherName" placeholder="Nombre del empleado">
+                        <input type="text" class="form-control" id="teacherName" placeholder="Nombres">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="teacherLastnameP">Apellidos</label>
-                        <input type="text" class="form-control" id="teacherLastnameP" placeholder="Apellido paterno del empleado">
+                        <label for="teacherLastname">Apellidos</label>
+                        <input type="text" class="form-control" id="teacherLastname" placeholder="Apellidos">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="teacherDni">DNI</label>
-                        <input type="text" class="form-control" id="teacherDni" placeholder="Dni del empleado">
+                        <input type="text" class="form-control" id="teacherDni" placeholder="DNI">
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="teacherLastnameM">Apellido Materno</label>
-                        <input type="text" class="form-control" id="teacherLastnameM" placeholder="Apellido materno del empleado">
+                        <label for="teacherAddress">Dirección</label>
+                        <input type="text" class="form-control" id="teacherAddress" placeholder="Dirección">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherBirhtDate">Fecha de Nacimiento</label>
+                        <input type="date" id="teacherBirhtDate" value="" class="form-control form-control-sm rounded-0"/>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherPhone">Teléfono</label>
+                        <input type="text" class="form-control" id="teacherPhone" placeholder="Teléfono">
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="typeTeacher">Tipo de Maestro</label>
-                <select class="form-control" id="typeTeacher" aria-label="Default select example">
-                    <option selected>Seleccionar</option>
-                    @foreach ($schedule as $cronograma)
-                        <option value="{{ $cronograma->id }}">
-                            {{ $cronograma->type_teacher }}
-                        </option>
-                    @endforeach
-                </select>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherEmail">Correo Electrónico</label>
+                        <input type="text" class="form-control" id="teacherEmail" placeholder="Correo Electrónico">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherFaculty">Facultad</label>
+                        <input type="text" class="form-control" id="teacherFaculty" placeholder="Facultad">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherFacultyDepartment">Departamento de Facultad</label>
+                        <input type="text" class="form-control" id="teacherFacultyDepartment" placeholder="Departamento de Facultad">
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="teacherArea">Nombre de Área</label>
-                <select class="form-control" id="teacherArea" aria-label="Default select example">
-                    <option selected>Seleccionar</option>
-                    @foreach ($areas as $area)
-                        <option value="{{ $area->id }}">{{ $area->AreaName }}</option>
-                    @endforeach
-                </select>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="teacherCodality">Modalidad</label>
+                        <input type="text" class="form-control" id="teacherCodality" placeholder="Modalidad">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="teacherCategory">Categoría</label>
+                        <input type="text" class="form-control" id="teacherCategory" placeholder="Categoría">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="teacherJobTitle">Titulo Profesional</label>
+                        <input type="text" class="form-control" id="teacherJobTitle" placeholder="Título">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="teacherDateAdmission">Fecha de Admisión</label>
+                        <input type="date" id="teacherDateAdmission" value="" class="form-control form-control-sm rounded-0"/>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="teacherSchedule">Horario</label>
-                <select class="form-control" id="teacherSchedule" aria-label="Default select example">
-                    <option selected>Seleccionar</option>
-                    @foreach ($schedule as $cronograma)
-                        <option value="{{ $cronograma->id }}">
-                            {{ $cronograma->start_time }} - {{ $cronograma->end_time }}
-                        </option>
-                    @endforeach
-                </select>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherCivilStatus">Estado Civil</label>
+                        <select class="form-control" id="teacherCivilStatus" aria-label="Default select example">
+                            <option selected>Seleccionar</option>
+                            @foreach ($civilStatusOptions as $civilStatus)
+                                <option value="{{ $civilStatus }}">
+                                    {{ $civilStatus }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherStatus">Estado del Maestro</label>
+                        <select class="form-control" id="teacherStatus" aria-label="Default select example">
+                            <option selected>Seleccionar</option>
+                            @foreach ($teacherStatusOptions as $teacherStatus)
+                                <option value="{{ $teacherStatus }}">
+                                    {{ $teacherStatus }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="teacherProfessionalGrade">Grado Profesional</label>
+                        <input type="text" class="form-control" id="teacherProfessionalGrade" placeholder="Grado Profesional">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="teacherCondition">Condición</label>
+                        <input type="text" class="form-control" id="teacherCondition" placeholder="Condición">
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -112,31 +179,43 @@
 
         $('#guardarTeacherButton').click(async function() {
             // Recoge los datos del formulario
-            var empType = $('#typeTeacher option:selected').text();
-            var areaId = $('#teacherArea').val();
-            var scheduleId = $('#teacherSchedule').val();
             var name = $('#teacherName').val();
-            var lastname_p = $('#teacherLastnameP').val();
-            var lastname_m = $('#teacherLastnameM').val();
+            var lastname = $('#teacherLastname').val();
             var dni = $('#teacherDni').val();
-
-            console.log("EmpType: " + empType);
-            console.log("AreaId: " + areaId);
-            console.log("ScheduleId: " + scheduleId);
-            console.log("name: " + name);
-            console.log("lastname_p: " + lastname_p);
-            console.log("lastname_m: " + lastname_m);
-            console.log("dni: " + dni);
+            var address = $('#teacherAddress').val();
+            var birthDate = $('#teacherBirhtDate').val();
+            var phone = $('#teacherPhone').val();
+            var email = $('#teacherEmail').val();
+            var faculty = $('#teacherFaculty').val();
+            var facultyDepartment = $('#teacherFacultyDepartment').val();
+            var codality = $('#teacherCodality').val();
+            var category = $('#teacherCategory').val();
+            var jobTitle = $('#teacherJobTitle').val();
+            var civilStatus = $('#teacherCivilStatus').val();
+            var teacherStatus = $('#teacherStatus').val();
+            var professionalGrade = $('#teacherProfessionalGrade').val();
+            var condition = $('#teacherCondition').val();
+            var dateAdmission = $('#teacherDateAdmission').val();
 
             try {
                 const response = await httpMyRequest('/api/save-teacher', {
-                    EmpType: empType,
-                    AreaId: areaId,
-                    ScheduleId: scheduleId,
                     name: name,
-                    lastname_p: lastname_p,
-                    lastname_m: lastname_m,
+                    lastname: lastname,
                     dni: dni,
+                    address: address,
+                    birthDate: birthDate,
+                    phone: phone,
+                    email: email,
+                    faculty: faculty,
+                    facultyDepartment: facultyDepartment,
+                    codality: codality,
+                    category: category,
+                    jobTitle: jobTitle,
+                    civilStatus: civilStatus,
+                    teacherStatus: teacherStatus,
+                    professionalGrade: professionalGrade,
+                    condition: condition,
+                    dateAdmission: dateAdmission
                 });
 
                 if (response.success) {
