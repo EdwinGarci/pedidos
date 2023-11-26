@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Area extends Model
+class Supplier extends Model
 {
-    protected $table = 'areas';
+    protected $table = 'suppliers';
     use SoftDeletes;
     use HasFactory;
 }

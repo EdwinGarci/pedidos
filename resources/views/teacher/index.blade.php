@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'Maestros')
+@section('title', 'Docentes')
 
 @section('content_header')
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center">
-        <span class="p-0 m-0 sourcesans h4">Maestros</span>
+        <span class="p-0 m-0 sourcesans h4">Docentes</span>
         <!-- <small>Lista de maestros</small> -->
     </div>
 </div>
@@ -14,7 +14,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title">Lista de Maestros</h5>
+        <h5 class="card-title">Lista de Docentes</h5>
         <button id="createTeacherButton" class="btn btn-primary btn-sm">Crear maestros</button>
     </div>
     <div class="card-body">
@@ -229,7 +229,7 @@
                 ////////////////////////
                 {
                     field: 'condition_teacher',
-                    title: 'Condición del Maestro',
+                    title: 'Condición del Docente',
                     align: 'center',
                 },
                 {

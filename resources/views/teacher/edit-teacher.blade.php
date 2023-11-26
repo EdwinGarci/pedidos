@@ -1,6 +1,6 @@
 <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title" id="updateTeacherModalLabel">Actualizar Maestro</h5>
+        <h5 class="modal-title" id="updateTeacherModalLabel">Actualizar Docente</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="updateTeacherStatus">Estado del Maestro</label>
+                        <label for="updateTeacherStatus">Estado del Docente</label>
                         <select class="form-control" id="updateTeacherStatus" aria-label="Default select example">
                             <option selected>Seleccionar</option>
                             @foreach ($teacherStatusOptions as $teacherStatus)
@@ -138,7 +138,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="updateTeacherButton">Actualizar Maestro</button>
+        <button type="button" class="btn btn-primary" id="updateTeacherButton">Actualizar Docente</button>
     </div>
     @if (session('success'))
     <div class="alert alert-success" role="alert">

@@ -74,10 +74,10 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a id="" class="nav-link only" href="/area">
+                        <a id="" class="nav-link only" href="/supplier">
                             <i class="fas fa-link ml-3"></i>
                             <p class="ml-2">
-                                Áreas
+                                Proveedores
                             </p>
                         </a>
                     </li>
@@ -87,7 +87,7 @@
                         <a id="" class="nav-link only" href="/teacher">
                             <i class="fas fa-link ml-3"></i>
                             <p class="ml-2">
-                                Maestros
+                                Docentes
                             </p>
                         </a>
                     </li>

@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'Areas')
+@section('title', 'Suppliers')
 
 @section('content_header')
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center">
-        <span class="p-0 m-0 sourcesans h4">Áreas</span>
+        <span class="p-0 m-0 sourcesans h4">Proveedores</span>
         <!-- <small>Lista de áreas</small> -->
     </div>
 </div>
@@ -14,24 +14,24 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title">Lista de áreas</h5>
-        <button id="createAreaButton" class="btn btn-primary btn-sm">Crear área</button>
+        <h5 class="card-title">Lista de proveedores</h5>
+        <button id="createSupplierButton" class="btn btn-primary btn-sm">Crear proveedor</button>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="area-table" class="table table-bordered table-hover" data-page-size="25" data-toggle="table" data-pagination="true" data-search="true">
+            <table id="supplier-table" class="table table-bordered table-hover" data-page-size="25" data-toggle="table" data-pagination="true" data-search="true">
             </table>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="crearAreaModal" tabindex="-1" role="dialog" aria-labelledby="crearAreaModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearSupplierModal" tabindex="-1" role="dialog" aria-labelledby="crearSupplierModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <!-- El contenido del modal se cargará aquí -->
     </div>
 </div>
 
-<div class="modal fade" id="updateAreaModal" tabindex="-1" role="dialog" aria-labelledby="updateAreaModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateSupplierModal" tabindex="-1" role="dialog" aria-labelledby="updateSupplierModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <!-- El contenido del modal se cargará aquí -->
     </div>
@@ -42,8 +42,8 @@
 <script>
     // Función para editar una fila
     function editRow(index) {
-        const row = $('#area-table').bootstrapTable('getData')[index];
-        const editUrl = "{!! url('/api/edit-area/') !!}" + "/" + row.id;
+        const row = $('#supplier-table').bootstrapTable('getData')[index];
+        const editUrl = "{!! url('/api/edit-supplier/') !!}" + "/" + row.id;
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -52,22 +52,22 @@
             type: 'POST',
             success: function(response) {
                 if (response) {
-                    $('#updateNombreArea').val(response.AreaName);
-                    $('#updateAreaModal .modal-dialog').html(response);
-                    $('#updateAreaModal').modal('show');
+                    $('#updateNombreSupplier').val(response.SupplierName);
+                    $('#updateSupplierModal .modal-dialog').html(response);
+                    $('#updateSupplierModal').modal('show');
                 } else {
-                    alert('Error al cargar los detalles del área.');
+                    alert('Error al cargar los detalles del proveedor.');
                 }
             },
             error: function() {
-                alert('Error al cargar los detalles del área2.');
+                alert('Error al cargar los detalles del proveedor.');
             }
         });
     }
 
     // Función para eliminar una fila
     function deleteRow(index) {
-        const row = $('#area-table').bootstrapTable('getData')[index];
+        const row = $('#supplier-table').bootstrapTable('getData')[index];
 
         // Mostrar una alerta de confirmación
         Swal.fire({
@@ -81,7 +81,7 @@
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                const deleteUrl = "{!! url('/api/delete-area/') !!}" + "/" + row.id;
+                const deleteUrl = "{!! url('/api/delete-supplier/') !!}" + "/" + row.id;
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -95,7 +95,7 @@
                         }
                     },
                     error: function() {
-                        Swal.fire('Error', 'No se pudo eliminar el área.', 'error');
+                        Swal.fire('Error', 'No se pudo eliminar el proveedor.', 'error');
                     }
                 });
             }
@@ -104,7 +104,7 @@
 
     let loadData;
     $(document).ready(function() {
-        var $table = $('#area-table');
+        var $table = $('#supplier-table');
 
         // Configuracion de encabezados
         $.ajaxSetup({
@@ -131,7 +131,7 @@
                 text: 'Cargando...',
             });
             try {
-                const response = await httpMyRequest('/api/data-area');
+                const response = await httpMyRequest('/api/data-supplier');
                 $table.bootstrapTable('refreshOptions', {
                     data: response
                 });
@@ -140,23 +140,23 @@
             }
         }
 
-        // Cargar datos de tabla al cargar la página y recibir respuesta de create-area
+        // Cargar datos de tabla al cargar la página y recibir respuesta de create-supplier
         loadData();
-        $(document).on('areaSaved', function() {
+        $(document).on('supplierSaved', function() {
             loadData();
         });
-        $(document).on('areaUpdateSaved', function() {
+        $(document).on('supplierUpdateSaved', function() {
             loadData();
         });
 
         // Abrir modal de crear
-        $('#createAreaButton').click(async function() {
+        $('#createSupplierButton').click(async function() {
             try {
-                const response = await httpMyRequest('/api/create-area', {});
-                $('#crearAreaModal .modal-dialog').html(response);
-                $('#crearAreaModal').modal('show');
+                const response = await httpMyRequest('/api/create-supplier', {});
+                $('#crearSupplierModal .modal-dialog').html(response);
+                $('#crearSupplierModal').modal('show');
             } catch (error) {
-                console.error('Error al intentar acceder a la página de creación del área:', error);
+                console.error('Error al intentar acceder a la página de creación del proveedor:', error);
             }
         });
 
@@ -179,8 +179,38 @@
                     },
                 },
                 {
-                    field: 'AreaName',
-                    title: 'Nombre',
+                    field: 'business_name',
+                    title: 'Nombre del Negocio',
+                    align: 'center',
+                },
+                {
+                    field: 'ruc',
+                    title: 'RUC',
+                    align: 'center',
+                },
+                {
+                    field: 'phone',
+                    title: 'Teléfono',
+                    align: 'center',
+                },
+                {
+                    field: 'direccion',
+                    title: 'Dirección',
+                    align: 'center',
+                },
+                {
+                    field: 'product_amount',
+                    title: 'Importe de producto',
+                    align: 'center',
+                },
+                {
+                    field: 'manager',
+                    title: 'Gerente',
+                    align: 'center',
+                },
+                {
+                    field: 'agreement_date',
+                    title: 'Fecha de Acuerdo',
                     align: 'center',
                 },
                 {

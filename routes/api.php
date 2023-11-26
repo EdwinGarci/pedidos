@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Area\AreaController;
+use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Report\ReportController;
@@ -37,12 +37,12 @@ Route::middleware('guest')->group( function() {
     Route::post('/save-attendances', [UploadController::class, 'saveAttendancesOfExcel']);
 
     // RUTAS DE AREA
-    Route::post('/data-area', [AreaController::class, 'dataArea']);
-    Route::post('/create-area', [AreaController::class, 'createArea']);
-    Route::post('/save-area', [AreaController::class, 'saveArea']);
-    Route::post('/edit-area/{id}', [AreaController::class, 'editArea']);
-    Route::patch('/update-area/{id}', [AreaController::class, 'updateArea']);
-    Route::delete('/delete-area/{id}', [AreaController::class, 'deleteArea']);
+    Route::post('/data-supplier', [SupplierController::class, 'dataSupplier']);
+    Route::post('/create-supplier', [SupplierController::class, 'createSupplier']);
+    Route::post('/save-supplier', [SupplierController::class, 'saveSupplier']);
+    Route::post('/edit-supplier/{id}', [SupplierController::class, 'editSupplier']);
+    Route::patch('/update-supplier/{id}', [SupplierController::class, 'updateSupplier']);
+    Route::delete('/delete-supplier/{id}', [SupplierController::class, 'deleteSupplier']);
 
     // RUTAS DE CRONOGRAMA(SCHEDULE)
     Route::post('/data-schedule', [ScheduleController::class, 'dataSchedule']);

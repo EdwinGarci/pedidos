@@ -2,7 +2,7 @@
 
 // use App\Http\Controllers\DashboardController;
 
-use App\Http\Controllers\Area\AreaController;
+use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\Auth\SigInController;
@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports', [ReportController::class, 'index']);
     Route::get('/reports/reportPdf', [ReportController::class, 'generatePdf']);
     Route::get('/upload', [UploadController::class, 'index']);
-    Route::get('/area', [AreaController::class, 'index']);
+    Route::get('/supplier', [SupplierController::class, 'index']);
     Route::get('/schedule', [ScheduleController::class, 'index']);
     Route::get('/attendance', [AttendanceController::class, 'index']);
     Route::get('/teacher', [TeacherController::class, 'index']);
