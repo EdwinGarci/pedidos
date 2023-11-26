@@ -7,7 +7,7 @@ use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Report\ReportController;
 use App\Http\Controllers\Auth\SigInController;
 use App\Http\Controllers\Teacher\TeacherController;
-use App\Http\Controllers\Schedule\ScheduleController;
+use App\Http\Controllers\Parent\ParentController;
 use App\Http\Controllers\Setting\UserController;
 use App\Http\Controllers\Upload\UploadController;
 use Illuminate\Support\Facades\Route;
@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/reports/reportPdf', [ReportController::class, 'generatePdf']);
     Route::get('/upload', [UploadController::class, 'index']);
     Route::get('/supplier', [SupplierController::class, 'index']);
-    Route::get('/schedule', [ScheduleController::class, 'index']);
+    Route::get('/parent', [ParentController::class, 'index']);
     Route::get('/attendance', [AttendanceController::class, 'index']);
     Route::get('/teacher', [TeacherController::class, 'index']);
     Route::get('/usuario', [UserController::class, 'user']);

@@ -104,10 +104,10 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a id="" class="nav-link only" href="/schedule">
+                        <a id="" class="nav-link only" href="/parent">
                             <i class="fas fa-link ml-3"></i>
                             <p class="ml-2">
-                                Cronograma
+                                Pariente
                             </p>
                         </a>
                     </li>

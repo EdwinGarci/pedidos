@@ -4,7 +4,7 @@ use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Attendance\AttendanceController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Report\ReportController;
-use App\Http\Controllers\Schedule\ScheduleController;
+use App\Http\Controllers\Parent\ParentController;
 use App\Http\Controllers\Setting\UserController;
 use App\Http\Controllers\Upload\UploadController;
 use Illuminate\Http\Request;
@@ -45,12 +45,12 @@ Route::middleware('guest')->group( function() {
     Route::delete('/delete-supplier/{id}', [SupplierController::class, 'deleteSupplier']);
 
     // RUTAS DE CRONOGRAMA(SCHEDULE)
-    Route::post('/data-schedule', [ScheduleController::class, 'dataSchedule']);
-    Route::post('/create-schedule', [ScheduleController::class, 'createSchedule']);
-    Route::post('/save-schedule', [ScheduleController::class, 'saveSchedule']);
-    Route::post('/edit-schedule/{id}', [ScheduleController::class, 'editSchedule']);
-    Route::patch('/update-schedule/{id}', [ScheduleController::class, 'updateSchedule']);
-    Route::delete('/delete-schedule/{id}', [ScheduleController::class, 'deleteSchedule']);
+    Route::post('/data-parent', [ParentController::class, 'dataParent']);
+    Route::post('/create-parent', [ParentController::class, 'createParent']);
+    Route::post('/save-parent', [ParentController::class, 'saveParent']);
+    Route::post('/edit-parent/{id}', [ParentController::class, 'editParent']);
+    Route::patch('/update-parent/{id}', [ParentController::class, 'updateParent']);
+    Route::delete('/delete-parent/{id}', [ParentController::class, 'deleteParent']);
 
     // RUTAS DE ASISTENCIA(ATTENDANCE)
     Route::post('/data-attendance', [AttendanceController::class, 'dataAttendance']);

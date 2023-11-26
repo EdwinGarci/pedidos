@@ -1,33 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Schedule;
+namespace App\Http\Controllers\Parent;
 
 use App\Http\Controllers\v1\BaseController;
-use App\Models\Schedule;
+use App\Models\Parents;
 use Illuminate\Http\Request;
 
-class ScheduleController extends BaseController
+class ParentController extends BaseController
 {
     public function index()
     {
         // $menu = $this->getMenuKeys(5);
-        return view('schedule.index');
+        return view('parent.index');
             // ->with('menuleft', $menu);
     }
 
-    public function dataSchedule()
+    public function dataParent()
     {
-        $schedules = Schedule::all();
+        $parents = Parents::all();
 
-        return response()->json($schedules);
+        return response()->json($parents);
     }
 
-    public function createSchedule()
+    public function createParent()
     {
-        return view('schedule.create-schedule');
+        return view('parent.create-parent');
     }
 
-    public function saveSchedule(Request $request)
+    public function saveParent(Request $request)
     {
         // Valida los datos del formulario
         $request->validate([
@@ -38,30 +38,30 @@ class ScheduleController extends BaseController
 
 
         // Crea un nuevo registro de área en la base de datos
-        $schedule = new Schedule;
-        $schedule->type_employee = $request->input('type_employee');
-        $schedule->start_time = $request->input('start_time');
-        $schedule->end_time = $request->input('end_time');
-        $schedule->save();
+        $parent = new Parents;
+        $parent->type_employee = $request->input('type_employee');
+        $parent->start_time = $request->input('start_time');
+        $parent->end_time = $request->input('end_time');
+        $parent->save();
 
         // Devuelve una respuesta JSON con un mensaje de éxito
         return response()->json(['success' => 'Cronograma creado con éxito']);
     }
 
-    public function editSchedule($id)
+    public function editParent($id)
     {
-        $schedule = Schedule::find($id);
+        $parent = Parents::find($id);
 
-        if (!$schedule) {
+        if (!$parent) {
             // Cronograma no encontrado, devuelve una respuesta JSON de error
             return response()->json(['error' => 'Cronograma no encontrado'], 404);
         }
 
         // Devuelve una vista con los detalles del área si se encuentra
-        return view('schedule.edit-schedule')->with('schedule', $schedule);
+        return view('parent.edit-parent')->with('parent', $parent);
     }
 
-    public function updateSchedule(Request $request, $id)
+    public function updateParent(Request $request, $id)
     {
         // Valida los datos del formulario
         $request->validate([
@@ -71,34 +71,34 @@ class ScheduleController extends BaseController
         ]);
 
         // Encuentra el área por su ID
-        $schedule = Schedule::find($id);
+        $parent = Parents::find($id);
 
-        if (!$schedule) {
+        if (!$parent) {
             // Maneja el caso en el que el área no se encuentra
             return response()->json(['error' => 'Cronograma no encontrado'], 404);
         }
 
         // Actualiza los datos del área
-        $schedule->type_employee = $request->input('type_employee');
-        $schedule->start_time = $request->input('start_time');
-        $schedule->end_time = $request->input('end_time');
-        $schedule->save();
+        $parent->type_employee = $request->input('type_employee');
+        $parent->start_time = $request->input('start_time');
+        $parent->end_time = $request->input('end_time');
+        $parent->save();
 
         // Devuelve una respuesta JSON con un mensaje de éxito
         return response()->json(['success' => 'Cronograma actualizado con éxito']);
     }
 
-    public function deleteSchedule($id)
+    public function deleteParent($id)
     {
-        $schedule = Schedule::find($id);
+        $parent = Parents::find($id);
 
-        if (!$schedule) {
+        if (!$parent) {
             // Área no encontrada, devuelve una respuesta JSON de error
             return response()->json(['error' => 'Cronograma no encontrado'], 404);
         }
 
         // Realiza una eliminación suave del área
-        $schedule->delete();
+        $parent->delete();
 
         // Devuelve una respuesta JSON de éxito
         return response()->json(['success' => 'Cronograma desactivado con éxito']);

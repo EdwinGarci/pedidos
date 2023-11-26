@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Schedule extends Model
+class Parents extends Model
 {
-    protected $table = 'schedules';
+    protected $table = 'parent';
     use SoftDeletes;
     use HasFactory;
 }

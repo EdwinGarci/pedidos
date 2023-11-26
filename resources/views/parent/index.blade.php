@@ -1,11 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'Cronograma')
+@section('title', 'Pariente')
 
 @section('content_header')
 <div class="container-fluid">
     <div class="d-flex justify-content-between align-items-center">
-        <span class="p-0 m-0 sourcesans h4">Cronograma</span>
+        <span class="p-0 m-0 sourcesans h4">Pariente</span>
     </div>
 </div>
 @stop
@@ -13,24 +13,24 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h5 class="card-title">Cronograma</h5>
-        <button id="createScheduleButton" class="btn btn-primary btn-sm">Crear cronograma</button>
+        <h5 class="card-title">Pariente</h5>
+        <button id="createParentButton" class="btn btn-primary btn-sm">Crear pariente</button>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table id="schedule-table" class="table table-bordered table-hover" data-page-size="25" data-toggle="table" data-pagination="true" data-search="true">
+            <table id="parent-table" class="table table-bordered table-hover" data-page-size="25" data-toggle="table" data-pagination="true" data-search="true">
             </table>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="crearScheduleModal" tabindex="-1" role="dialog" aria-labelledby="crearScheduleModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearParentModal" tabindex="-1" role="dialog" aria-labelledby="crearParentModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <!-- El contenido del modal se cargará aquí -->
     </div>
 </div>
 
-<div class="modal fade" id="updateScheduleModal" tabindex="-1" role="dialog" aria-labelledby="updateScheduleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updateParentModal" tabindex="-1" role="dialog" aria-labelledby="updateParentModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <!-- El contenido del modal se cargará aquí -->
     </div>
@@ -41,8 +41,8 @@
 <script>
     // Función para editar una fila
     function editRow(index) {
-        const row = $('#schedule-table').bootstrapTable('getData')[index];
-        const editUrl = "{!! url('/api/edit-schedule/') !!}" + "/" + row.id;
+        const row = $('#parent-table').bootstrapTable('getData')[index];
+        const editUrl = "{!! url('/api/edit-parent/') !!}" + "/" + row.id;
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -51,11 +51,11 @@
             type: 'POST',
             success: function(response) {
                 if (response) {
-                    $('#updateNombreSchedule').val(response.type_employee);
-                    $('#updateStartTimeSchedule').val(response.start_time);
-                    $('#updateEndTimeSchedule').val(response.end_time);
-                    $('#updateScheduleModal .modal-dialog').html(response);
-                    $('#updateScheduleModal').modal('show');
+                    $('#updateNombreParent').val(response.type_employee);
+                    $('#updateStartTimeParent').val(response.start_time);
+                    $('#updateEndTimeParent').val(response.end_time);
+                    $('#updateParentModal .modal-dialog').html(response);
+                    $('#updateParentModal').modal('show');
                 } else {
                     alert('Error al cargar los detalles del cronograma.');
                 }
@@ -68,7 +68,7 @@
 
     // Función para eliminar una fila
     function deleteRow(index) {
-        const row = $('#schedule-table').bootstrapTable('getData')[index];
+        const row = $('#parent-table').bootstrapTable('getData')[index];
 
         // Mostrar una alerta de confirmación
         Swal.fire({
@@ -82,7 +82,7 @@
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                const deleteUrl = "{!! url('/api/delete-schedule/') !!}" + "/" + row.id;
+                const deleteUrl = "{!! url('/api/delete-parent/') !!}" + "/" + row.id;
                 $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -105,7 +105,7 @@
 
     let loadData;
     $(document).ready(function() {
-        var $table = $('#schedule-table');
+        var $table = $('#parent-table');
 
         // Configuracion de encabezados
         $.ajaxSetup({
@@ -132,7 +132,7 @@
                 text: 'Cargando...',
             });
             try {
-                const response = await httpMyRequest('/api/data-schedule');
+                const response = await httpMyRequest('/api/data-parent');
                 $table.bootstrapTable('refreshOptions', {
                     data: response
                 });
@@ -143,19 +143,19 @@
 
         // Cargar datos de tabla al cargar la página y recibir respuesta de create-area
         loadData();
-        $(document).on('scheduleSaved', function() {
+        $(document).on('parentSaved', function() {
             loadData();
         });
-        $(document).on('scheduleUpdateSaved', function() {
+        $(document).on('parentUpdateSaved', function() {
             loadData();
         });
 
         // Abrir modal de crear
-        $('#createScheduleButton').click(async function() {
+        $('#createParentButton').click(async function() {
             try {
-                const response = await httpMyRequest('/api/create-schedule', {});
-                $('#crearScheduleModal .modal-dialog').html(response);
-                $('#crearScheduleModal').modal('show');
+                const response = await httpMyRequest('/api/create-parent', {});
+                $('#crearParentModal .modal-dialog').html(response);
+                $('#crearParentModal').modal('show');
             } catch (error) {
                 console.error('Error al intentar acceder a la página de creación del cronograma:', error);
             }
@@ -180,20 +180,20 @@
                     },
                 },
                 {
-                    field: 'type_employee',
-                    title: 'Tipo de Empleado',
+                    field: 'relationship',
+                    title: 'Relación familiar',
                     align: 'center',
                 },
-                {
-                    field: 'start_time',
-                    title: 'Hora de inicio',
-                    align: 'center',
-                },
-                {
-                    field: 'end_time',
-                    title: 'Hora de salida',
-                    align: 'center',
-                },
+                // {
+                //     field: 'start_time',
+                //     title: 'Hora de inicio',
+                //     align: 'center',
+                // },
+                // {
+                //     field: 'end_time',
+                //     title: 'Hora de salida',
+                //     align: 'center',
+                // },
                 {
                     title: 'Acciones',
                     align: 'center',
