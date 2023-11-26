@@ -9,16 +9,22 @@
         <form>
             @csrf
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label for="teacherName">Nombres</label>
                         <input type="text" class="form-control" id="teacherName" placeholder="Nombre del empleado">
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="teacherLastnameP">Apellido Paterno</label>
+                        <label for="teacherLastnameP">Apellidos</label>
                         <input type="text" class="form-control" id="teacherLastnameP" placeholder="Apellido paterno del empleado">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="teacherDni">DNI</label>
+                        <input type="text" class="form-control" id="teacherDni" placeholder="Dni del empleado">
                     </div>
                 </div>
             </div>
@@ -27,12 +33,6 @@
                     <div class="form-group">
                         <label for="teacherLastnameM">Apellido Materno</label>
                         <input type="text" class="form-control" id="teacherLastnameM" placeholder="Apellido materno del empleado">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="teacherDni">DNI</label>
-                        <input type="text" class="form-control" id="teacherDni" placeholder="Dni del empleado">
                     </div>
                 </div>
             </div>
