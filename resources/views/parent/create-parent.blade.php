@@ -13,27 +13,40 @@
                 <input type="text" class="form-control" id="typeParent" placeholder="Escribe el nombre del tipo de empleado">
             </div>
             <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="parentName">Nombres</label>
+                        <input type="text" class="form-control" id="parentName" placeholder="Nombres">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="parentLastname">Apellidos</label>
+                        <input type="text" class="form-control" id="parentLastname" placeholder="Apellidos">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="parentSex">Sexo</label>
+                        <input type="text" class="form-control" id="parentSex" placeholder="Apellidos">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="employeeAttendance">Empleado</label>
-                        <select class="form-control" id="employeeAttendance" aria-label="Default select example">
-                            <option selected>Seleccionar</option>
-                            @foreach ($employees as $employee)
-                                <option value="{{ $employee->id }}">
-                                    {{ $employee->PerName }} {{ $employee->PerLastName }} {{ $employee->PerMotherLastName }}
-                                </option>
-                            @endforeach
-                        </select>
+                        <label for="parentBirhtDate">Fecha de Nacimiento</label>
+                        <input type="date" id="parentBirhtDate" value="" class="form-control form-control-sm rounded-0"/>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="employeeAttendance">Empleado</label>
-                        <select class="form-control" id="employeeAttendance" aria-label="Default select example">
+                        <label for="teacherType">Docente relacionado</label>
+                        <select class="form-control" id="teacherType" aria-label="Default select example">
                             <option selected>Seleccionar</option>
-                            @foreach ($employees as $employee)
-                                <option value="{{ $employee->id }}">
-                                    {{ $employee->PerName }} {{ $employee->PerLastName }} {{ $employee->PerMotherLastName }}
+                            @foreach ($teacher as $teach)
+                                <option value="{{ $teach->id }}">
+                                    {{ $teach->name . ' ' . $teach->lastname }}
                                 </option>
                             @endforeach
                         </select>
@@ -77,13 +90,19 @@
         $('#guardarParentButton').click(async function() {
             // Recoge los datos del formulario
             var typeParent = $('#typeParent').val();
-            var start_time = $('#startTimeParent').val();
-            var end_time = $('#endTimeParent').val();
+            var parentName = $('#parentName').val();
+            var parentLastname = $('#parentLastname').val();
+            var parentSex = $('#parentSex').val();
+            var parentBirthDate = $('#parentBirhtDate').val();
+            var teacherType = $('#teacherType').val();
             try {
                 const response = await httpMyRequest('/api/save-parent', {
-                    type_employee: typeParent,
-                    start_time: start_time,
-                    end_time: end_time
+                    type_parent: typeParent,
+                    parent_name: parentName,
+                    parent_lastname: parentLastname,
+                    parent_sex: parentSex,
+                    parent_birthdate: parentBirthDate,
+                    teacher_type: teacherType,
                 });
 
                 if (response.success) {

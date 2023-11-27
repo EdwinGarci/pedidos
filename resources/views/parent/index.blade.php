@@ -184,16 +184,34 @@
                     title: 'Relación familiar',
                     align: 'center',
                 },
-                // {
-                //     field: 'start_time',
-                //     title: 'Hora de inicio',
-                //     align: 'center',
-                // },
-                // {
-                //     field: 'end_time',
-                //     title: 'Hora de salida',
-                //     align: 'center',
-                // },
+                {
+                    field: 'parent_name',
+                    title: 'Nombres',
+                    align: 'center',
+                },
+                {
+                    field: 'parent_lastname',
+                    title: 'Apellidos',
+                    align: 'center',
+                },
+                {
+                    field: 'parent_sex',
+                    title: 'Sexo',
+                    align: 'center',
+                },
+                {
+                    field: 'parent_birthdate',
+                    title: 'Fecha de nacimiento',
+                    align: 'center',
+                },
+                {
+                    field: 'Trabajador',
+                    title: 'Trabajador',
+                    align: 'center',
+                    formatter: function (value, row) {
+                        return row.teacher_name + ' ' + row.teacher_lastname;
+                    }
+                },
                 {
                     title: 'Acciones',
                     align: 'center',
